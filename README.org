@@ -1,0 +1,2 @@
+#+STARTUP: showall
+#+TITLE: Base functionality for Tecgraf libraries (IUP, CD and IM)
