@@ -3,7 +3,8 @@
   (:export #:ihandle
            #:im-image
            #:im-file
-           #:defalias))
+           #:defalias
+           #:maybe-add-foreign-library-directory))
 
 (in-package #:tecgraf-base)
 
@@ -16,3 +17,8 @@
      (setf (fdefinition ',to) ,what)
      (when ,documentation
        (setf (documentation ',to ',documentation-type) ,documentation))))
+
+(defun maybe-add-foreign-library-directory ()
+  (let ((tecgraf-libs-directory (asdf:system-relative-pathname "tecgraf-libs" "libs/")))
+    (when tecgraf-libs-directory
+      (pushnew tecgraf-libs-directory cffi:*foreign-library-directories*))))
