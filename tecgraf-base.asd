@@ -6,4 +6,5 @@
   :serial t
   :components ((:file "tecgraf-base"))
   :depends-on (#:pffft #:cffi)
-  :perform (load-op :after (o c) (uiop:symbol-call "TECGRAF-BASE" "MAYBE-ADD-FOREIGN-LIBRARY-DIRECTORY")))
+  :perform (load-op :after (o c)
+             (uiop:symbol-call "TECGRAF-BASE" "MAYBE-ADD-FOREIGN-LIBRARY-DIRECTORY")))
