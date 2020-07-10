@@ -19,6 +19,7 @@
        (setf (documentation ',to ',documentation-type) ,documentation))))
 
 (defun maybe-add-foreign-library-directory ()
-  (let ((tecgraf-libs-directory (asdf:system-relative-pathname "tecgraf-libs" "libs/")))
-    (when tecgraf-libs-directory
-      (pushnew tecgraf-libs-directory cffi:*foreign-library-directories*))))
+  (handler-case 
+      (pushnew (asdf:system-relative-pathname "tecgraf-libs" "libs/") cffi:*foreign-library-directories*)
+    (asdf/find-component:missing-component ()
+      (warn "System \"tecgraf-libs\" not found. You'll need to install IUP, IM and CD shared libraries manually."))))
