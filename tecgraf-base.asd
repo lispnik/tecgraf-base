@@ -5,8 +5,6 @@
   :license "MIT"
   :serial t
   :components ((:file "tecgraf-base"))
-  :depends-on (#:pffft
-               #:cffi
-               #:uiop)
+  :depends-on (#:cffi #:uiop)
   :perform (load-op :after (o c)
              (uiop:symbol-call "TECGRAF-BASE" "MAYBE-ADD-FOREIGN-LIBRARY-DIRECTORY")))
